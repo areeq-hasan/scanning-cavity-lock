@@ -10,7 +10,7 @@ p = Pyrpl(config="scanning-cavity-lock")
 r = p.rp
 
 r.scope.input1 = 'asg0'
-r.scope.input2 = 'in1'
+r.scope.input2 = 'in2'
 
 r.scope.trigger_source = 'ch1_positive_edge'
 r.scope.trigger_delay = 0
@@ -24,7 +24,7 @@ try:
     while True:
         trace = r.scope.curve_async()
 
-        r.asg0.setup(frequency=DRIVE_FREQUENCY, amplitude=0.5, offset=0.5, waveform='sin', trigger_source='immediately', output_direct='out1')
+        r.asg0.setup(frequency=DRIVE_FREQUENCY, amplitude=0.2, offset=0, waveform='sin', trigger_source='immediately', output_direct='out1')
         sleep(0.01)
 
         drive_trace, cavity_trace = trace.result()
